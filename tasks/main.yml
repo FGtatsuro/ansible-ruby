@@ -1,4 +1,7 @@
 ---
 # tasks file for ruby
-- name: Run specified tasks on current platform 
+- name: Run specified tasks on current platform
   include: "{{ ansible_os_family }}.yml"
+- name: Install Bundler with gem
+  gem: name=bundler
+
