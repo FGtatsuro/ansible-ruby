@@ -1,2 +1,4 @@
 ---
 # tasks file for ruby(On Debian family)
+- name: Install Ruby with APT
+  apt: name=ruby update_cache=yes cache_valid_time=3600 install_recommends=no
