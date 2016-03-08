@@ -3,7 +3,7 @@
 ansible-ruby
 ====================================
 
-Ansible role for ruby.
+Ansible role for Ruby.
 
 Requirements
 ------------
@@ -44,6 +44,17 @@ Local requirements are as follows.
 
 - Ansible (>= 2.0.0)
 - Docker (>= 1.10.1)
+
+Notes
+-----
+
+Installed Ruby version depends on the contents package system of each platform provides.
+
+- Debian: APT
+- OSX: Homebrew
+
+But at least, this role ensures that the supported platforms install Ruby(>= 2.0).
+This version constraints is needed to run Serverspec.
 
 License
 -------
