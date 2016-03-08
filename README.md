@@ -37,7 +37,7 @@ Test on local Docker host
 -------------------------
 
 This project run tests on Travis CI, but we can also run then on local Docker host.
-Please check `install`, `before_script`, and `script` sections of `.travis.yml`. 
+Please check `install`, `before_script`, and `script` sections of `.travis.yml`.
 We can use same steps of them for local Docker host.
 
 Local requirements are as follows.
@@ -48,13 +48,15 @@ Local requirements are as follows.
 Notes
 -----
 
-Installed Ruby version depends on the contents package system of each platform provides.
+1. Installed Ruby version depends on the contents package system of each platform provides.
 
-- Debian: APT
-- OSX: Homebrew
+  - Debian: APT
+  - OSX: Homebrew
 
-But at least, this role ensures that the supported platforms install Ruby(>= 2.0).
-This version constraints is needed to run Serverspec.
+  But at least, this role ensures that the supported platforms install Ruby(>= 2.0).
+  This version constraints is needed to run Serverspec.
+
+2. And this role installs not only ruby interpreter, but also Bundler.
 
 License
 -------
