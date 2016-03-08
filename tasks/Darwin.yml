@@ -1,2 +1,4 @@
 ---
 # tasks file for ruby(On OSX)
+- name: Install Ruby with Homebrew
+  homebrew: name=ruby update_homebrew=yes
