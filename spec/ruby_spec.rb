@@ -20,6 +20,10 @@ describe command('which gem') do
   its(:exit_status) { should eq 0 }
 end
 
+describe package('bundler') do
+  it { should be_installed.by('gem') }
+end
+
 describe command('which bundle') do
   its(:exit_status) { should eq 0 }
 end
