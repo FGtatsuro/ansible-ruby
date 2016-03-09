@@ -3,5 +3,5 @@
 - name: Run specified tasks on current platform
   include: "{{ ansible_os_family }}.yml"
 - name: Install Bundler with gem
-  gem: name=bundler
+  gem: name=bundler user_install=no
 
