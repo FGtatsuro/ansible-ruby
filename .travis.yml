@@ -6,6 +6,7 @@ matrix:
       language: generic
       env:
         - TARGET=localhost
+        - GEM_HOME=/opt/ruby
     - os: linux
       dist: trusty
       language: python
@@ -25,6 +26,7 @@ matrix:
         - docker rm -f container
       env:
         - TARGET=container
+        - GEM_HOME=/opt/ruby
 
 # This role needs sudo, thus we can't use the new container infrastructure
 # sudo: false
@@ -37,7 +39,9 @@ install:
   - bundle install
 
 script:
-  # Basic role syntax check
+  # Set environment variables affecting this role
+  - mkdir -p ${GEM_HOME}
+  - export GEM_PATH=${GEM_HOME} PATH=${GEM_HOME}/bin:${PATH} BUNDLE_PATH=${GEM_HOME}
   - ansible-playbook tests/test.yml -i tests/inventory --syntax-check
   - ansible-playbook tests/test.yml -i tests/inventory -l ${TARGET} -vvvv
   - bundle exec rake spec SPEC_TARGET=${TARGET}
