@@ -2,6 +2,8 @@
 # tasks file for ruby
 - name: Run specified tasks on current platform
   include: "{{ ansible_os_family }}.yml"
+# This step may be affected by some environment variables.
+# Please check 'Notes' in README.md when you want to know details.
 - name: Install Bundler with gem
   gem: name=bundler user_install=no
   become: yes

@@ -57,6 +57,14 @@ Notes
   This version constraints is needed to run Serverspec.
 
 2. And this role installs not only ruby interpreter, but also Bundler.
+  Bundler installation(with RubyGems) is affected by some environment variables. For example,
+
+  - GEM_HOME
+  - GEM_PATH
+  - BUNDLE_PATH
+
+  This role uses above environments set in the target host.
+  Thus, the role user must be responsible for handle those environment variables properly.
 
 License
 -------
