@@ -39,11 +39,11 @@ install:
 
 script:
   # Set environment variables affecting this role
-  - mkdir -p ${GEM_HOME}
+  - sudo mkdir -p ${GEM_HOME}
   - export GEM_PATH=${GEM_HOME} PATH=${GEM_HOME}/bin:${PATH} BUNDLE_PATH=${GEM_HOME}
-  - bundle install
   - ansible-playbook tests/test.yml -i tests/inventory --syntax-check
   - ansible-playbook tests/test.yml -i tests/inventory -l ${TARGET} -vvvv
+  - bundle install
   - bundle exec rake spec SPEC_TARGET=${TARGET}
 
 notifications:
