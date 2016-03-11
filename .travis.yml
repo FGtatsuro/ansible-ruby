@@ -6,7 +6,12 @@ matrix:
       language: generic
       env:
         - TARGET=localhost
-        - GEM_HOME=/opt/ruby
+        # Environment variables for gem directory of Homebrew.
+        # ATTENTION: These pathes will be changed when version update occurs
+        - GEM_HOME=/usr/local/Cellar/ruby/2.3.0/lib/ruby/gems/2.3.0
+        - GEM_PATH=${GEM_HOME}
+        - BUNDLE_PATH=${GEM_HOME}
+        - export PATH="${GEM_HOME}/bin:${PATH}"
     - os: linux
       dist: trusty
       language: python
@@ -26,7 +31,6 @@ matrix:
         - docker rm -f container
       env:
         - TARGET=container
-        - GEM_HOME=/opt/ruby
 
 # This role needs sudo, thus we can't use the new container infrastructure
 # sudo: false
@@ -38,9 +42,6 @@ install:
   - ansible-galaxy install FGtatsuro.python-requirements
 
 script:
-  # Set environment variables affecting this role
-  - sudo mkdir -p ${GEM_HOME}
-  - export GEM_PATH=${GEM_HOME} PATH=${GEM_HOME}/bin:${PATH} BUNDLE_PATH=${GEM_HOME}
   - ansible-playbook tests/test.yml -i tests/inventory --syntax-check
   - ansible-playbook tests/test.yml -i tests/inventory -l ${TARGET} -vvvv
   - bundle install
