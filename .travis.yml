@@ -6,6 +6,12 @@ matrix:
       language: generic
       env:
         - TARGET=localhost
+        # Environment variables for gem directory of Homebrew.
+        # ATTENTION: These pathes will be changed when version update occurs
+        - GEM_HOME=/usr/local/Cellar/ruby/2.3.0/lib/ruby/gems/2.3.0
+        - GEM_PATH=${GEM_HOME}
+        - BUNDLE_PATH=${GEM_HOME}
+        - export PATH="${GEM_HOME}/bin:${PATH}"
     - os: linux
       dist: trusty
       language: python
@@ -34,12 +40,11 @@ install:
   - sudo pip install ansible
   # Resolve dependencies(When target role isn't installed via Ansible Galaxy, auto resolution of dependencies doesn't occur.)
   - ansible-galaxy install FGtatsuro.python-requirements
-  - bundle install
 
 script:
-  # Basic role syntax check
   - ansible-playbook tests/test.yml -i tests/inventory --syntax-check
   - ansible-playbook tests/test.yml -i tests/inventory -l ${TARGET} -vvvv
+  - bundle install
   - bundle exec rake spec SPEC_TARGET=${TARGET}
 
 notifications:
