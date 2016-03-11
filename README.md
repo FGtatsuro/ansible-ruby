@@ -19,6 +19,10 @@ Role Variables
 
 The variables we can use in this role.
 
+|name|description|default|
+|---|---|---|
+|ruby_gem_installation_become|If yes, `gem install` is executed with `become=true`.|no|
+
 Role Dependencies
 -----------------
 
@@ -63,8 +67,10 @@ Notes
   - GEM_PATH
   - BUNDLE_PATH
 
-  This role uses above environments set in the target host.
-  Thus, the role user must be responsible for handle those environment variables properly.
+  This role doesn't set above variables in the target host, thus the role user must be responsible for handling them properly.
+
+  And you'll need root privilege when user who runs Ansible doesn't have write permission for gem directory. In this case,
+  please use `ruby_gem_installation_become` role variable.
 
 License
 -------

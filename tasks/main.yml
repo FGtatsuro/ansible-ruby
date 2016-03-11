@@ -6,4 +6,4 @@
 # Please check 'Notes' in README.md when you want to know details.
 - name: Install Bundler with gem
   gem: name=bundler user_install=no
-  become: yes
+  become: "{{ ruby_gem_installation_become }}"
