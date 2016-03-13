@@ -15,8 +15,8 @@ describe package('ruby'), :if => os[:family] == 'darwin' do
   it { should be_installed.by('homebrew') }
 end
 
-describe package('ruby'), :if => os[:family] == 'debian' do
-  it { should be_installed.by('apt') }
+describe package('ruby'), :if => ['debian', 'alpine'].include?(os[:family]) do
+  it { should be_installed }
 end
 
 describe package('ruby') do

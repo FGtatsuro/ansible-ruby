@@ -1,0 +1,5 @@
+---
+# tasks file for ruby(On Alpine Linux)
+- name: Install Ruby with APT
+  apk: name=ruby update_cache=yes
+  become: yes

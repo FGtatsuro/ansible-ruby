@@ -11,6 +11,7 @@ Requirements
 The dependencies on other softwares/librarys for this role.
 
 - Debian
+- Alpine Linux
 - OSX
   - Homebrew (>= 0.9.5)
 
@@ -55,6 +56,7 @@ Notes
 1. Installed Ruby version depends on the contents package system of each platform provides.
 
   - Debian: APT
+  - Alpine Linux: APK
   - OSX: Homebrew
 
   But at least, this role ensures that the supported platforms install Ruby(>= 2.0).
