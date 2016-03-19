@@ -74,6 +74,11 @@ Notes
   And you'll need root privilege when user who runs Ansible doesn't have write permission for gem directory. In this case,
   please use `ruby_gem_installation_become` role variable.
 
+3. This role also installs packages for building Ruby extention modules. If you don't need them, please remove them in your playbook.
+
+  - build-essential, ruby-dev (Debian)
+  - build-base, ruby-dev (Alpine Linux)
+
 License
 -------
 
