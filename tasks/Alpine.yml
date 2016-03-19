@@ -1,5 +1,11 @@
 ---
 # tasks file for ruby(On Alpine Linux)
-- name: Install Ruby with APT
+- name: Install requirements for building Ruby extention modules
+  apk: name={{ item }} update_cache=yes
+  with_items:
+    - build-base
+    - ruby-dev
+  become: yes
+- name: Install Ruby with APK
   apk: name=ruby update_cache=yes
   become: yes
