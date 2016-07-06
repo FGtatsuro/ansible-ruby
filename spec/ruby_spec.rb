@@ -9,7 +9,9 @@ require "spec_helper_#{ENV['SPEC_TARGET_BACKEND']}"
 #
 # We may set GEM_PATH to Specinfra settings as follows if we want to use custom RubyGems/Bundler settings.
 # Ref(CustomSetting) https://github.com/docker-library/ruby/blob/4a3fdc3eed98346362a62b5d53e56f7f4e4e6d63/2.3/alpine/Dockerfile
-#set :env, :GEM_PATH => ENV['BUNDLE_PATH'] if ENV['BUNDLE_PATH']
+if os[:family] == 'darwin' then
+  set :env, :GEM_PATH => ENV['BUNDLE_PATH'] if ENV['BUNDLE_PATH']
+end
 
 describe package('ruby'), :if => os[:family] == 'darwin' do
   it { should be_installed.by('homebrew') }
